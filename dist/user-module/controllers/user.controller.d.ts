@@ -1,4 +1,4 @@
-import { UserLoginDto, UserSignUpDto } from "src/dto/user.dto";
+import { UserLoginDto, UserSignUpDto } from "../../dto/user.dto";
 import { UserService } from "../services/user.service";
 export declare class UserController {
     private userService;

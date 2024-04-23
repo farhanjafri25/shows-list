@@ -31,9 +31,7 @@ export declare class ListService {
         _id: import("mongoose").Types.ObjectId;
     }>;
     fetchUserLists(userId: string, page: number, pageSize: number): Promise<{
-        docs: (import("mongoose").Document<unknown, {}, import("../../model/list.model").ListInterface> & import("../../model/list.model").ListInterface & {
-            _id: import("mongoose").Types.ObjectId;
-        })[];
+        docs: any[];
         nextPage: number;
     }>;
     removeContentFromUsersList(contentId: string, userId: string): Promise<import("mongodb").DeleteResult>;

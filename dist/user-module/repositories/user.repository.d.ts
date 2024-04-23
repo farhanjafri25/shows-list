@@ -34,7 +34,7 @@ export declare class UserRepository {
     getUserById(id: string): Promise<import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    getUserByEmail(email: string): Promise<import("mongoose").Document<unknown, {}, User> & User & {
+    getUserByEmail(username: string): Promise<import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     }>;
 }
