@@ -44,8 +44,13 @@ export class ListService {
 			for (let i = 0; i < fetchUserList.length; i++) {
 				fetchUserList[i] = { ...fetchUserList[i], ...promiseArray[i] };
             }
+            console.log(`fetchUserList -->`, fetchUserList);
+            const res = [];
+            fetchUserList.forEach((ele) => {
+                res.push(ele['_doc']);
+            })
 			return {
-				docs: fetchUserList,
+				docs: res,
 				nextPage: fetchUserList.length >= pageSize ? page + 1 : null,
 			};
 		} catch (error) {
