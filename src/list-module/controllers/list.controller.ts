@@ -8,9 +8,9 @@ import {
 	Query,
     UseInterceptors,
 } from "@nestjs/common";
-import { AppInterceptor } from "src/app.interceptor";
-import { GetCurrentUser } from "src/decorators";
-import { SaveListDto } from "src/dto/saveList.dto";
+import { AppInterceptor } from "../../app.interceptor";
+import { GetCurrentUser } from "../../decorators";
+import { SaveListDto } from "../../dto/saveList.dto";
 import { ListService } from "../services/list.service";
 
 @UseInterceptors(AppInterceptor)
