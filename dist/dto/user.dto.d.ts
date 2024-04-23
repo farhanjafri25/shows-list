@@ -1,9 +1,9 @@
 export declare class UserSignUpDto {
-    email: string;
+    username: string;
     password: string;
     confirmPassword: string;
 }
 export declare class UserLoginDto {
-    email: string;
+    username: string;
     password: string;
 }

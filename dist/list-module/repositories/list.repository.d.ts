@@ -22,25 +22,21 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import * as mongoose from 'mongoose';
-export declare const GameSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    userId: string;
-    score: number;
-    gameId: string;
-}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    userId: string;
-    score: number;
-    gameId: string;
-}>> & mongoose.FlatRecord<{
-    userId: string;
-    score: number;
-    gameId: string;
-}> & {
-    _id: mongoose.Types.ObjectId;
-}>;
-export interface GameScore {
-    id: string;
-    userId: string;
-    score: number;
-    gameId: string;
+import { Movie } from "src/model/movie.model";
+import { Model } from "mongoose";
+import { TVShow } from "src/model/tvshow.model";
+import { ListInterface } from "src/model/list.model";
+export declare class ListRepository {
+    private readonly movieModel;
+    private readonly tvshowModel;
+    private readonly usersList;
+    constructor(movieModel: Model<Movie>, tvshowModel: Model<TVShow>, usersList: Model<ListInterface>);
+    addShowToUser(userId: string, contentId: string, contentType: string): Promise<import("mongoose").Document<unknown, {}, ListInterface> & ListInterface & {
+        _id: import("mongoose").Types.ObjectId;
+    }>;
+    getShowbyId(contentId: string, contentType: string): Promise<any>;
+    getUserList(userId: string, page: number, pageSize: number): Promise<(import("mongoose").Document<unknown, {}, ListInterface> & ListInterface & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
+    removeContentFromUser(contentId: string, userId: string): Promise<import("mongodb").DeleteResult>;
 }

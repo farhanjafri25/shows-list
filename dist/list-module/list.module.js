@@ -6,30 +6,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GameModule = void 0;
+exports.ListModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const jwt_strategy_1 = require("../jwt.strategy");
-const game_controller_1 = require("./controllers/game.controller");
-const game_repository_1 = require("./repositories/game.repository");
-const game_service_1 = require("./services/game.service");
-const socket_gateway_1 = require("./socketController/socket.gateway");
 const user_module_1 = require("../user-module/user.module");
 const passport_1 = require("@nestjs/passport");
 const strategies_1 = require("../strategies");
 const mongoose_1 = require("@nestjs/mongoose");
-const question_model_1 = require("../model/question.model");
-const game_model_1 = require("../model/game.model");
 const path = require("path");
 const dotenv = require("dotenv");
+const movie_model_1 = require("../model/movie.model");
+const tvshow_model_1 = require("../model/tvshow.model");
+const list_model_1 = require("../model/list.model");
+const list_controller_1 = require("./controllers/list.controller");
+const list_service_1 = require("./services/list.service");
+const list_repository_1 = require("./repositories/list.repository");
 const envPath = path.join(process.cwd(), process.env.NODE_ENV ? `envs/.env.${process.env.NODE_ENV}` : `/.env`);
 dotenv.config({
     path: envPath,
 });
-let GameModule = class GameModule {
+let ListModule = class ListModule {
 };
-exports.GameModule = GameModule;
-exports.GameModule = GameModule = __decorate([
+exports.ListModule = ListModule;
+exports.ListModule = ListModule = __decorate([
     (0, common_1.Module)({
         imports: [
             jwt_1.JwtModule.register({
@@ -38,25 +38,24 @@ exports.GameModule = GameModule = __decorate([
             user_module_1.UserModule,
             passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
             mongoose_1.MongooseModule.forFeature([
-                { name: 'questions_data', schema: question_model_1.QuestionSchema },
-                { name: 'game_score_data', schema: game_model_1.GameSchema },
+                { name: 'movie_schema', schema: movie_model_1.MovieSchema },
+                { name: 'tvshow_schema', schema: tvshow_model_1.TvShowSchema },
+                { name: 'users_list', schema: list_model_1.ListSchema }
             ]),
         ],
-        controllers: [game_controller_1.GameController],
+        controllers: [list_controller_1.ListController],
         providers: [
-            game_service_1.GameService,
-            game_repository_1.GameRepository,
+            list_service_1.ListService,
+            list_repository_1.ListRepository,
             jwt_strategy_1.JwtStrategy,
-            socket_gateway_1.AppGateway,
             strategies_1.AccessTokenStrategy,
         ],
         exports: [
-            game_service_1.GameService,
-            game_repository_1.GameRepository,
+            list_service_1.ListService,
+            list_repository_1.ListRepository,
             jwt_strategy_1.JwtStrategy,
-            socket_gateway_1.AppGateway,
             strategies_1.AccessTokenStrategy,
         ],
     })
-], GameModule);
-//# sourceMappingURL=game.module.js.map
+], ListModule);
+//# sourceMappingURL=list.module.js.map

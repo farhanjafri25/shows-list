@@ -23,24 +23,38 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import * as mongoose from 'mongoose';
-export declare const QuestionSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    questionText: string;
-    options: string[];
-    correctAnswer: string;
+type Genre = 'Action' | 'Comedy' | 'Drama' | 'Fantasy' | 'Horror' | 'Romance' | 'SciFi';
+export declare const MovieSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    genres: string[];
+    actors: string[];
+    description?: string;
+    title?: string;
+    releaseDate?: Date;
+    director?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    questionText: string;
-    options: string[];
-    correctAnswer: string;
+    genres: string[];
+    actors: string[];
+    description?: string;
+    title?: string;
+    releaseDate?: Date;
+    director?: string;
 }>> & mongoose.FlatRecord<{
-    questionText: string;
-    options: string[];
-    correctAnswer: string;
+    genres: string[];
+    actors: string[];
+    description?: string;
+    title?: string;
+    releaseDate?: Date;
+    director?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
 }>;
-export interface QuestionInterface {
+export interface Movie {
     id: string;
-    questionText: string;
-    options: number;
-    correctAnswer: string;
+    title: string;
+    description: string;
+    genres: Genre[];
+    releaseDate: Date;
+    director: string;
+    actors: string[];
 }
+export {};

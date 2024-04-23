@@ -14,7 +14,7 @@ export declare class UserService {
     }>;
     loginUser(body: UserLoginInterface): Promise<{
         userId: string;
-        email: string;
+        username: string;
         accessToken: string;
     }>;
 }

@@ -12,8 +12,8 @@ const core_1 = require("@nestjs/core");
 const mongoose_1 = require("@nestjs/mongoose");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const game_module_1 = require("./game-module/game.module");
 const guards_1 = require("./guards");
+const list_module_1 = require("./list-module/list.module");
 const user_module_1 = require("./user-module/user.module");
 let AppModule = class AppModule {
 };
@@ -23,7 +23,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot(`${process.env.MONGO_URI}`),
             user_module_1.UserModule,
-            game_module_1.GameModule,
+            list_module_1.ListModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [

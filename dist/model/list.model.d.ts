@@ -22,18 +22,26 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { QuestionInterface } from 'src/model/question.model';
-import { Model } from 'mongoose';
-import { GameScore } from '../../model/game.model';
-export declare class GameRepository {
-    private readonly questionModel;
-    private readonly gameScoreModel;
-    constructor(questionModel: Model<QuestionInterface>, gameScoreModel: Model<GameScore>);
-    getQuestions(page: number, pageSize?: number): Promise<(import("mongoose").Document<unknown, {}, QuestionInterface> & QuestionInterface & {
-        _id: import("mongoose").Types.ObjectId;
-    })[]>;
-    getQuestionById(questionId: string): Promise<import("mongoose").Document<unknown, {}, QuestionInterface> & QuestionInterface & {
-        _id: import("mongoose").Types.ObjectId;
-    }>;
-    saveGameScore(userId: string, roomId: string, score: number): Promise<any>;
+import * as mongoose from 'mongoose';
+type ContentType = "MOVIE" | "TVSHOW";
+export declare const ListSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    contentId?: string;
+    userId?: string;
+    contentType?: string;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    contentId?: string;
+    userId?: string;
+    contentType?: string;
+}>> & mongoose.FlatRecord<{
+    contentId?: string;
+    userId?: string;
+    contentType?: string;
+}> & {
+    _id: mongoose.Types.ObjectId;
+}>;
+export interface ListInterface {
+    userId: string;
+    contentId: string;
+    contentType: ContentType;
 }
+export {};

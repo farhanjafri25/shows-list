@@ -11,5 +11,5 @@ export const ListSchema = new mongoose.Schema({
 export interface ListInterface {
     userId: string,
     contentId: string,
-    contentType: string,
+    contentType: ContentType,
 }

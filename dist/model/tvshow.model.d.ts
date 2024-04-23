@@ -24,60 +24,53 @@
 /// <reference types="mongoose/types/inferschematype" />
 import * as mongoose from 'mongoose';
 type Genre = 'Action' | 'Comedy' | 'Drama' | 'Fantasy' | 'Horror' | 'Romance' | 'SciFi';
-export declare const UserSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    userId: string;
-    password: string;
-    username: string;
-    watchHistory: mongoose.Types.DocumentArray<{
-        contentId: string;
-        watchedOn: Date;
-        rating?: number;
+export declare const TvShowSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    genres: string[];
+    episodes: mongoose.Types.DocumentArray<{
+        actors: string[];
+        releaseDate?: Date;
+        director?: string;
+        episodeNumber?: number;
+        seasonNumber?: number;
     }>;
-    preferences?: {
-        favoriteGenres: string[];
-        dislikedGenres: string[];
-    };
+    description?: string;
+    title?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    userId: string;
-    password: string;
-    username: string;
-    watchHistory: mongoose.Types.DocumentArray<{
-        contentId: string;
-        watchedOn: Date;
-        rating?: number;
+    genres: string[];
+    episodes: mongoose.Types.DocumentArray<{
+        actors: string[];
+        releaseDate?: Date;
+        director?: string;
+        episodeNumber?: number;
+        seasonNumber?: number;
     }>;
-    preferences?: {
-        favoriteGenres: string[];
-        dislikedGenres: string[];
-    };
+    description?: string;
+    title?: string;
 }>> & mongoose.FlatRecord<{
-    userId: string;
-    password: string;
-    username: string;
-    watchHistory: mongoose.Types.DocumentArray<{
-        contentId: string;
-        watchedOn: Date;
-        rating?: number;
+    genres: string[];
+    episodes: mongoose.Types.DocumentArray<{
+        actors: string[];
+        releaseDate?: Date;
+        director?: string;
+        episodeNumber?: number;
+        seasonNumber?: number;
     }>;
-    preferences?: {
-        favoriteGenres: string[];
-        dislikedGenres: string[];
-    };
+    description?: string;
+    title?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
 }>;
-export interface User {
-    userId: string;
-    username: string;
-    password: string;
-    preferences: {
-        favoriteGenres: Genre[];
-        dislikedGenres: Genre[];
-    };
-    watchHistory: Array<{
-        contentId: string;
-        watchedOn: Date;
-        rating?: number;
+export interface TVShow {
+    id: string;
+    title: string;
+    description: string;
+    genres: Genre[];
+    episodes: Array<{
+        episodeNumber: number;
+        seasonNumber: number;
+        releaseDate: Date;
+        director: string;
+        actors: string[];
     }>;
 }
 export {};

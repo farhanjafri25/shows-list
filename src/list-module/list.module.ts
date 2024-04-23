@@ -7,8 +7,12 @@ import { AccessTokenStrategy } from '../strategies';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { MovieSchema } from 'src/model/movie.model';
-import { TvShowSchema } from 'src/model/tvshow.model';
+import { MovieSchema } from '../model/movie.model';
+import { TvShowSchema } from '../model/tvshow.model';
+import { ListSchema } from '../model/list.model';
+import { ListController } from './controllers/list.controller';
+import { ListService } from './services/list.service';
+import { ListRepository } from './repositories/list.repository';
 
 const envPath = path.join(
   process.cwd(),
@@ -28,16 +32,19 @@ dotenv.config({
     MongooseModule.forFeature([
       { name: 'movie_schema', schema: MovieSchema },
       { name: 'tvshow_schema', schema: TvShowSchema },
+      {name: 'users_list', schema: ListSchema}
     ]),
   ],
-  controllers: [],
+  controllers: [ListController],
   providers: [
-    
+    ListService,
+    ListRepository,
     JwtStrategy,
     AccessTokenStrategy,
   ],
   exports: [
-  
+    ListService,
+    ListRepository,
     JwtStrategy,
     AccessTokenStrategy,
   ],

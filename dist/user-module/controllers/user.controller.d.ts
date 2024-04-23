@@ -10,7 +10,7 @@ export declare class UserController {
     }>;
     loginUser(body: UserLoginDto): Promise<{
         userId: string;
-        email: string;
+        username: string;
         accessToken: string;
     }>;
 }

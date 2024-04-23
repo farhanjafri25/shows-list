@@ -9,37 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserLoginDto = exports.UserSignUpDto = void 0;
+exports.SaveListDto = void 0;
 const class_validator_1 = require("class-validator");
-class UserSignUpDto {
+class SaveListDto {
 }
-exports.UserSignUpDto = UserSignUpDto;
+exports.SaveListDto = SaveListDto;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], UserSignUpDto.prototype, "username", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsStrongPassword)(),
-    __metadata("design:type", String)
-], UserSignUpDto.prototype, "password", void 0);
-__decorate([
-    (0, class_validator_1.IsStrongPassword)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UserSignUpDto.prototype, "confirmPassword", void 0);
-class UserLoginDto {
-}
-exports.UserLoginDto = UserLoginDto;
+], SaveListDto.prototype, "contentId", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], UserLoginDto.prototype, "username", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], UserLoginDto.prototype, "password", void 0);
-//# sourceMappingURL=user.dto.js.map
+], SaveListDto.prototype, "contentType", void 0);
+//# sourceMappingURL=saveList.dto.js.map

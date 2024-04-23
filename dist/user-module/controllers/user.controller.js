@@ -24,7 +24,7 @@ let UserController = class UserController {
         this.userService = userService;
     }
     async signUser(body) {
-        if (!body.email || !body.password || !body.confirmPassword) {
+        if (!body.username || !body.password || !body.confirmPassword) {
             throw new common_1.BadRequestException('All fields are required');
         }
         if (body.password !== body.confirmPassword) {
@@ -34,7 +34,7 @@ let UserController = class UserController {
         return saveUser;
     }
     async loginUser(body) {
-        if (!body.email || !body.password) {
+        if (!body.username || !body.password) {
             throw new common_1.BadRequestException('All fields are required');
         }
         const loginUser = await this.userService.loginUser(body);
