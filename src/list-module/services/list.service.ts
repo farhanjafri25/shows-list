@@ -33,7 +33,13 @@ export class ListService {
 			console.log(
 				"ListService ~ fetchUserLists ~ fetchUserList:",
 				fetchUserList
-			);
+            );
+            if (!fetchUserList.length) {
+                return {
+                    docs: [],
+                    nextPage: null,
+                }
+            }
 			let listDetails = [];
 			fetchUserList.forEach((ele) => {
 				listDetails.push(
