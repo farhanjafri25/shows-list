@@ -33,7 +33,7 @@ export class UserService {
     }
     //Generate AccessToken of user with 1day validity
     const accessToken = this.jwtService.sign(
-      { userId: saveUser.userId, email: saveUser.username },
+      { userId: saveUser.userId, username: saveUser.username },
       {
         expiresIn: '1d',
       },
@@ -47,25 +47,25 @@ export class UserService {
 
   async loginUser(body: UserLoginInterface) {
     //Get user by input email
-    const getUserByEmail = await this.userRepository.getUserByEmail(body.username);
-    if (!getUserByEmail) throw new UnauthorizedException('User not found');
+    const getUserByUsername = await this.userRepository.getUserByEmail(body.username);
+    if (!getUserByUsername) throw new UnauthorizedException('User not found');
     //Call match password function to check validity between input string and stored password
     const matchPasswords = await this.utility.comparePassword(
       body.password,
-      getUserByEmail.password,
+      getUserByUsername.password,
     );
     if (!matchPasswords)
       throw new UnauthorizedException('Passwords do not match');
     //Generate access token and send to user
     const accessToken = this.jwtService.sign(
-      { userId: getUserByEmail.userId, username: getUserByEmail.username },
+      { userId: getUserByUsername.userId, username: getUserByUsername.username },
       {
         expiresIn: '1d',
       },
     );
     return {
-      userId: getUserByEmail.userId,
-      username: getUserByEmail.username,
+      userId: getUserByUsername.userId,
+      username: getUserByUsername.username,
       accessToken,
     };
   }

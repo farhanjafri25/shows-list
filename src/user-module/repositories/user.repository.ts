@@ -39,9 +39,9 @@ export class UserRepository {
     }
   }
   //Function to retrieve user by email  
-    async getUserByEmail(email: string) {
+    async getUserByEmail(username: string) {
         try {
-            const res = await this.userModel.findOne({ email: email });
+            const res = await this.userModel.findOne({ username: username });
             if (!res) {
                 return null
             }
